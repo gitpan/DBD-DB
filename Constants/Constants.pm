@@ -1,7 +1,7 @@
 #
 #   engn/perldb2/Constants/Constants.pm, engn_perldb2, db2_v6, 1.2 99/01/12 13:51:45
 #
-#   Copyright (c) 1995,1996,1999 International Business Machines Corp.
+#   Copyright (c) 1995,1996,1999,2004 International Business Machines Corp.
 #
 package DBD::DB2::Constants;
 
@@ -116,6 +116,7 @@ require AutoLoader;
 	SQL_API_SQLGETSTMTOPTION
 	SQL_API_SQLGETSUBSTRING
 	SQL_API_SQLGETTYPEINFO
+	SQL_API_SQLINFOEXISTS
 	SQL_API_SQLMORERESULTS
 	SQL_API_SQLNATIVESQL
 	SQL_API_SQLNUMPARAMS
@@ -242,6 +243,7 @@ require AutoLoader;
 	SQL_ATTR_ROW_NUMBER
 	SQL_ATTR_ROW_OPERATION_PTR
 	SQL_ATTR_ROW_STATUS_PTR
+        SQL_ATTR_SET_SCHEMA
 	SQL_ATTR_SIMULATE_CURSOR
 	SQL_ATTR_STMTTXN_ISOLATION
 	SQL_ATTR_SYNC_POINT
@@ -1550,12 +1552,13 @@ require AutoLoader;
 	SQL_WCHARTYPE_CONVERT
 	SQL_WCHARTYPE_DEFAULT
 	SQL_WCHARTYPE_NOCONVERT
+        SQL_XML
 	SQL_XOPEN_CLI_YEAR
 	SQL_YEAR
 	SQL_YEAR_TO_MONTH
 	TRACE_VERSION
 );
-$VERSION = '0.20';
+$VERSION = '1.6';
 
 sub AUTOLOAD {
     # This AUTOLOAD is used to 'autoload' constants from the constant()

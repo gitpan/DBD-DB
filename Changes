@@ -1,31 +1,42 @@
-September 4th, 2008
+=head1 NAME
 
-DBD::DB2 1.2
+DBD::DB2 - List of changes
 
-  Release and Code Changes to support Trusted Context.
-  Fixed Bug for Driver Compilation Failing on Solaris.
+=cut
 
-May 24th, 2007
+=head2 Changes in DBD::DB2 1.6, Feb 18, 2009
+  Improved Error and Warning Handling - Internal Bug - 166025
+  Improved XML Support to handle large XML Files - 171868
+  Include SQL_ATTR_INFO_PROGRAMNAME as Constant - 166029
+  Include SQL_ATTR_CALL_RETURN as Constant - 171813
+  Memory Cleanup - 170940
+  
 
-DBD::DB2 1.1
+=head2 Changes in DBD::DB2 1.3, Dec 25,2008
+  Added support for DB2 on MacOS
+  Changes in Makefile.PL to support compilation with dmake with ActivePerl 5.8.X and 5.10.X
+
+=head2 Changes in DBD::DB2 1.2, Sept 4, 2008
+  New Added Support for Trusted Context
+  Fixed Compilation Problem on Solaris
+
+=head2 Changes in DBD::DB2 1.1, May 24, 2007
   
   Fixed compile error which was caused due to changes made with DBIc_CACHED_KIDS in DBIv1.55.
 
-October 2nd, 2006
-
-DBD::DB2 1.0
+=head2 Changes in DBD::DB2 1.0, October 25, 2006
 
   Fixed bug in cancel method
 
-  Fixed bug to enable iterative execute and fetch
+  Fixed bug to enabled iterative execute and fetch
 
-  Fixed bug to handle multiple result sets (compatible with DBIv1.53)
+  Fixed bug to handle multiple result sets (compatible with DBIv1.53 and later)
 
   Fixed memory leak when accessing column names
 
   Add support for tolerated error handling
 
-DBD::DB2 0.9a
+=head2 Changes in DBD::DB2 0.9a, August 18, 2006
 
   Add support for multi-byte locales, such as UTF-8
 
@@ -33,13 +44,15 @@ DBD::DB2 0.9a
 
   Fix bug in get_info
 
+  Documentation:
+
+  Add Changes file
+
   Updated DB2.pod
   Add examples for binding LOB files
   Add examples for fetching LOB pieces
 
-August 04, 2006
-
-DBD::DB2 0.80
+=head2 Changes in DBD::DB2 0.80, August 04, 2006
 
   Add set current schema as a connection attribute
 
@@ -47,7 +60,7 @@ DBD::DB2 0.80
 
   Add support for get_info in order to avoid errors when unsupported InfoType codes are requested
 
-  Add support for full connection string during DBI->connect
+  Add support for full connection string during db2_connect
 
   Add 64 and 32 bit support during compilation
 
@@ -55,21 +68,15 @@ DBD::DB2 0.80
   Add link to the DB2 Information Center
   Add link to the IBM DB2 Perl Database Interface guide
 
-July 21, 2006
-
-DBD::DB2 0.79a
+=head2 Changes in DBD::DB2 0.79a, July 21, 2006
 
   Add support for SQL_ATTR_LOGIN_TIMEOUT
 
-September 20, 2004
-
-DBD::DB2 0.78
+=head2 Changes in DBD::DB2 0.78, September 20, 2004
 
   Add support for C-style comments in sql
 
-September 15, 2004
-
-DBD::DB2 0.77
+=head2 Changes in DBD::DB2 0.77, September 15, 2004
 
   NOTE: DBD::DB2 now requires DBI 1.21, which requires
   perl 5.005_03 or later.
@@ -102,9 +109,7 @@ DBD::DB2 0.77
   Update DB2.pod
   Add metadata function examples
 
-October 1, 2001
-
-DBD::DB2 0.76
+=head2 Changes in DBD::DB2 0.76, October 1, 2001
 
   Remove cached statement attributes for multiple result sets
 
@@ -135,9 +140,7 @@ DBD::DB2 0.76
 
   Add support for attributes in $dbh->tables and $dbh->table_info.
 
-March 29, 2001
-
-DBD::DB2 0.75
+=head2 Changes in DBD::DB2 0.75, March 29, 2001
 
   Add new statement attributes.
 
@@ -160,9 +163,7 @@ DBD::DB2 0.75
   Add support for $dbh->ping.
 
 
-September 6, 2000
-
-DBD::DB2 0.74
+=head2 Changes in DBD::DB2 0.74, September 6, 2000
 
   Use execute immediate for $dbh->do() when statement does not use
   parameter markers.
@@ -190,9 +191,7 @@ DBD::DB2 0.74
   Miscellaneous performance enhancements.
 
 
-May 12, 2000
-
-DBD::DB2 0.73
+=head2 Changes in DBD::DB2 0.73, May 12, 2000
 
   Automatically set CAPI=TRUE in Makefile.PL when Perl Object
   abtraction is enabled.
@@ -209,9 +208,7 @@ DBD::DB2 0.73
   was turned on.
 
 
-April 14, 2000
-
-DBD::DB2-0.72
+=head2 Changes in DBD::DB2 0.72, April 14, 2000
 
   Added support for bind_param_inout.
 
@@ -232,9 +229,7 @@ DBD::DB2-0.72
   General performance improvements.
 
 
-January 12, 1999
-
-DBD::DB2-0.71
+=head2 Changes in DBD::DB2 0.71, January 12, 1999
 
   Ported to Windows NT!
 
@@ -249,9 +244,7 @@ DBD::DB2-0.71
   A couple of bugs in dbd_bind_ph() were fixed.
 
 
-September 25, 1998
-
-DBD::DB2-0.70
+=head2 Changes in DBD::DB2 0.70, September 25, 1998
 
    Corrected values returned from execute().
    Added support for CursorName, TYPE, PRECISION,
@@ -259,24 +252,19 @@ DBD::DB2-0.70
    Minor cleanup.
 
 
-July 5, 1998
-
-DBD::DB2-0.68
+=head2 Changes in DBD::DB2 0.68, July 5, 1998
 
    Found and fixed a couple of bugs relating to the handling of
       remote data
 
 
-May 11, 1998
-
-DBD::DB2-0.67
+=head2 Changes in DBD::DB2 0.67, May 11, 1998
 
     Fixed a bug dealing with functions returning SUCCESS_WITH_INFO
 
 
-April 2, 1998
+=head2 Changes in DBD::DB2 0.66, April 2, 1998
 
-DBD::DB2-0.66
     Rewrote code to support multiple concurrent connections
 
     Fixed a pair of bugs, dealing with nested error codes not
@@ -291,14 +279,14 @@ DBD::DB2-0.66
 ****
 
 
-Dec 10, 1997
+=head2 Changes in DBD::DB2, Dec 10, 1997
 
     Fixed a pair of errors which resulted in the infamous
       "DBI Handle has uncleared implementors data" on finishing
       statements prior to disconnect.
 
 
-Feb 7, 1997
+=head2 Changes in DBD::DB2, Feb 7, 1997
 
         Created a small pod for DBD::DB2.  Hopefully, this
         will lighten the email load.
@@ -308,14 +296,14 @@ Feb 7, 1997
 
         Output Parameters for stored procedures now work.
 
-Dec 12, 1996
+=head2 Changes in DBD::DB2, Dec 12, 1996
         1. This version fixes a problem with setting/unsetting
        AutoCommit on the database handle...I need a better
        test suite :-(
 
         2. Fixed problem with connect/disconnect/connect cycle
 
-Oct 7, 1996
+=head2 Changes in DBD::DB2, Oct 7, 1996
 
 Added access to the SetStmtOption call, which in conjunction with
 DB2 v 2.1.1 NLV2 will allow asynchronous database access among other
@@ -326,7 +314,7 @@ asynchronous access is working properly.  Other options appear to
 be working.....so I'm assuming that asynchronous access is.
 
 
-Aug 16, 1996
+=head2 Changes in DBD::DB2, Aug 16, 1996
 
 Fixed the following:
 
@@ -335,7 +323,7 @@ Fixed the following:
     2. Invalidated cursor messages when exiting after finishing the
        cursors.
 
-June 21, 1996
+=head2 Changes in DBD::DB2, June 21, 1996
 
 Fixed the following:
 
@@ -352,7 +340,7 @@ NOTE:  **********************************************************
 
 *****************************************************************
 
-June 12, 1996
+=head2 Changes in DBD::DB2, June 12, 1996
 
 Fixed the following:
 
@@ -369,11 +357,11 @@ Fixed the following:
         that scripts my fail gracefully.
 
 
-April 25, 1996
+=head2 Changes in DBD::DB2, April 25, 1996
     No KNOWN problems -- it is however alpha software.
 
 
-Nov. 17, 1995
+=head2 Changes in DBD::DB2, Nov. 17, 1995
 
         NOTE: ***********************************************************
           This will be the last release of DB2perl this year.  I will
@@ -389,9 +377,11 @@ Nov. 17, 1995
       chet@watson.ibm.com
 
 
-Sept. 22, 1995
+=head2 Changes in DBD::DB2, Sept. 22, 1995
     Fetching data works by either
        @row = $sth->fetchrow()  or ($f1, $f2, $f2) = $sth->fetchrow()
 
-Sept. 19, 1995
+=head2 Changes in DBD::DB2, Sept. 19, 1995
         Initial beta release
+
+=cut

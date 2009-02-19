@@ -2,6 +2,8 @@
    engn/perldb2/DB2.h, engn_perldb2, db2_v82fp9, 1.9 04/09/13 17:17:47
 
    Copyright (c) 1995-2004  International Business Machines Corp.
+
+
 */
 
 #define NEED_DBIXS_VERSION 7
@@ -23,6 +25,21 @@
 #ifndef AS400                                                    
 AV*  dbd_data_sources _((SV *drh));                              
 #endif                                                           
+
+#ifndef SQL_XML
+#define SQL_XML -370
+#endif
+
+#ifndef SQL_ATTR_USE_TRUSTED_CONTEXT
+#define SQL_ATTR_USE_TRUSTED_CONTEXT 2561
+#define SQL_ATTR_TRUSTED_CONTEXT_USERID 2562
+#define SQL_ATTR_TRUSTED_CONTEXT_PASSWORD 2563
+#endif
+
+#ifndef SQL_ATTR_SET_SCHEMA
+#define SQL_ATTR_SET_SCHEMA 2579
+#endif
+
 int  dbd_db_login2 _((SV *dbh, imp_dbh_t *imp_dbh, char *dbname, char *uid, char *pwd, SV *attr));
 int  dbd_db_ping _((SV *dbh));                                    
 int  dbd_st_table_info _((SV *sth, imp_sth_t *imp_sth, SV *attr));
@@ -58,5 +75,6 @@ int  dbd_st_type_info_all _(( SV        *sth,
 SV*  dbd_db_get_info _(( SV        *dbh,
                          imp_dbh_t *imp_dth,
                          short     infoType ));                  
+
 
 /* end of DB2.h */

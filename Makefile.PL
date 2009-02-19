@@ -1,4 +1,4 @@
-#
+
 #   engn/perldb2/Makefile.PL, engn_perldb2, db2_v82fp9, 1.11 04/09/14 10:47:41
 #
 #   Copyright (c) 1995-2004 International Business Machines Corp.
@@ -12,7 +12,7 @@ require 'flush.pl';
 
 use DBI;        # The DBI must be installed before we can build a DBD
 
-%opts = (
+my %opts = (
     'NAME'         => 'DBD::DB2',
     'VERSION_FROM' => 'DB2.pm',
     ($] ge '5.005')
@@ -72,16 +72,43 @@ die "$envvar environment variable ($DB2) not valid.\n" unless -d $DB2;
 
 print qq(Using DB2 in "$DB2"\n);
 
-# --- Setup include paths and libraries
-
-$opts{INC} .= qq(-I"$DB2/include" -I"$Config{sitearch}/auto/DBI" );
-$opts{INC} .= qq(-I"$Config{vendorarch}/auto/DBI") if $Config{vendorarch};
-$opts{dynamic_lib} = { OTHERLDFLAGS => '$(COMPOBJS) '};
-
 # libraries required to build DBD::DB2 driver
 if( $os eq 'MSWin32' || $os eq 'MSWin64' || $os eq 'os2' )
 {
-  $sysliblist = qq(-L"$DB2/lib" db2cli db2api);
+  # --- Setup include paths and libraries
+  if( $] ge '5.010000')
+  {
+    $opts{INC} .= qq(-I"$DB2/include" -I"$Config{archlib}/auto/DBI" );
+    $opts{INC} .= qq(-I"$Config{vendorarch}/auto/DBI") if $Config{vendorarch};
+    $opts{dynamic_lib} = { OTHERLDFLAGS => '$(COMPOBJS) '};
+  }
+  else
+  {
+    $opts{INC} .= qq(-I"$DB2/include" -I"$Config{sitearch}/auto/DBI" );
+    $opts{INC} .= qq(-I"$Config{vendorarch}/auto/DBI") if $Config{vendorarch};
+    $opts{dynamic_lib} = { OTHERLDFLAGS => '$(COMPOBJS) '};
+  }
+
+  my $DB2LIB = $ENV{'DB2LIB'};
+  if( not $DB2LIB )
+  {
+    if (-e "$DB2/lib64")
+    {
+      $DB2LIB = "$DB2/lib64";
+    }
+    else
+    {
+      if (-e "$DB2/lib32")
+      {
+         $DB2LIB = "$DB2/lib32";
+      }
+      else
+      {
+        $DB2LIB = "$DB2/lib";
+      }
+    }
+  }
+  $sysliblist = qq(-L"$DB2LIB" db2cli.lib db2api.lib);
   my @libpaths = split /;/, $ENV{'LIB'};
   my $libpath;
   while( @libpaths )
@@ -97,7 +124,34 @@ if( $os eq 'MSWin32' || $os eq 'MSWin64' || $os eq 'os2' )
 }
 else
 {
-  $sysliblist = "-L$DB2/lib -ldb2";
+
+  # --- Setup include paths and libraries
+  $opts{INC} .= qq(-I"$DB2/include" -I"$Config{sitearch}/auto/DBI" );
+  $opts{INC} .= qq(-I"$Config{vendorarch}/auto/DBI") if $Config{vendorarch};
+  $opts{dynamic_lib} = { OTHERLDFLAGS => '$(COMPOBJS) '};
+
+  my $DB2LIB = $ENV{'DB2LIB'};
+  if( not $DB2LIB )
+  {
+    if (-e "$DB2/lib64")
+    {
+      $DB2LIB = "$DB2/lib64";
+    }
+    else
+    {
+      if (-e "$DB2/lib32")
+      {
+         $DB2LIB = "$DB2/lib32";
+      }
+      else
+      {
+        $DB2LIB = "$DB2/lib";
+      }
+    }
+  }
+      
+  $sysliblist = "-L$DB2LIB -ldb2";
+
 }
 
 # --- Handle special cases ---
@@ -105,6 +159,15 @@ if ($os eq 'hpux')
 {
   $sysliblist .= ' -lcl';
   $opts{DEFINE} .= ' +e';
+}
+
+#Defining a macro to fix the compile issue in DBD::DB2  
+#which was due to change in definition of DBIc_CACHED_KIDS in DBIv1.55  
+ 
+#if( $DBI::VERSION > 1.54 )
+if( "$DBI::VERSION" ge "1.55" )
+{
+   $opts{DEFINE} .= ' -DDB2_CACHE_FIX ';
 }
 
 $opts{LIBS} = [ $sysliblist ];

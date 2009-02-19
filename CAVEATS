@@ -1,6 +1,6 @@
 Building DBD::DB2
 -----------------
-1.  The DBD::DB2 driver is supported by DB2 UDB V7.2 and
+1.  The DBD::DB2 driver is supported by DB2 UDB V8.2 and
     later. See http://www.software.ibm.com/data/db2/perl
     for more information on supported environments.
 2.  The DB2 Application Development Client is required.
@@ -105,6 +105,14 @@ types "const unsigned char*" and "char*" is not allowed.
 
 The fix is to edit the Makefile and add "-qlanglvl=extended"
 to the CCFLAGS entry
+
+
+Special Notes re: Windows
+-------------------------
+When using MS Visual Studio 7 (cl compiler version 13.10.3077),
+"nmake test" fails. This problem can be fixed by upgrading to
+Service Pack 1 (cl compiler version 13.10.6030). With this version,
+if you continue with the install, the programs run fine.
 
 
 Special Notes re: Binding the CLI packages

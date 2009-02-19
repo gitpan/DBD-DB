@@ -647,6 +647,12 @@ int arg;
 #else
 	    goto not_there;
 #endif
+	if (strEQ(name, "SQL_API_SQLINFOEXISTS"))
+#ifdef SQL_API_SQLINFOEXISTS
+	    return SQL_API_SQLINFOEXISTS;
+#else
+	    goto not_there;
+#endif
 	if (strEQ(name, "SQL_API_SQLMORERESULTS"))
 #ifdef SQL_API_SQLMORERESULTS
 	    return SQL_API_SQLMORERESULTS;
@@ -935,6 +941,12 @@ int arg;
 #else
 	    goto not_there;
 #endif
+	if (strEQ(name, "SQL_ATTR_CALL_RETURN"))
+#ifdef SQL_ATTR_CALL_RETURN
+	    return SQL_ATTR_CALL_RETURN;
+#else
+	    goto not_there;
+#endif
 	if (strEQ(name, "SQL_ATTR_CONCURRENCY"))
 #ifdef SQL_ATTR_CONCURRENCY
 	    return SQL_ATTR_CONCURRENCY;
@@ -1148,6 +1160,12 @@ int arg;
 	if (strEQ(name, "SQL_ATTR_INFO_APPLNAME"))
 #ifdef SQL_ATTR_INFO_APPLNAME
 	    return SQL_ATTR_INFO_APPLNAME;
+#else
+	    goto not_there;
+#endif
+	if (strEQ(name, "SQL_ATTR_INFO_PROGRAMNAME"))
+#ifdef SQL_ATTR_INFO_PROGRAMNAME
+	    return SQL_ATTR_INFO_PROGRAMNAME;
 #else
 	    goto not_there;
 #endif
@@ -1394,6 +1412,12 @@ int arg;
 	if (strEQ(name, "SQL_ATTR_ROW_STATUS_PTR"))
 #ifdef SQL_ATTR_ROW_STATUS_PTR
 	    return SQL_ATTR_ROW_STATUS_PTR;
+#else
+	    goto not_there;
+#endif
+	if (strEQ(name, "SQL_ATTR_SET_SCHEMA"))
+#ifdef SQL_ATTR_SET_SCHEMA
+	    return SQL_ATTR_SET_SCHEMA;
 #else
 	    goto not_there;
 #endif
@@ -9206,6 +9230,12 @@ int arg;
 	if (strEQ(name, "SQL_WCHARTYPE_NOCONVERT"))
 #ifdef SQL_WCHARTYPE_NOCONVERT
 	    return SQL_WCHARTYPE_NOCONVERT;
+#else
+	    goto not_there;
+#endif
+	if (strEQ(name, "SQL_XML"))
+#ifdef SQL_XML
+	    return SQL_XML;
 #else
 	    goto not_there;
 #endif

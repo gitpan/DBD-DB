@@ -1,5 +1,5 @@
 #
-#   engn/perldb2/DB2.pm, engn_perldb2, db2_v82fp9, 1.10 04/09/13 17:17:44
+#   engn/perldb2/DB2.pm, engn_perldb2, db2_v82fp9, 1.10 04/09/19 17:17:44
 #
 #   Copyright (c) 1995-2004  International Business Machines Corp.
 #
@@ -23,8 +23,8 @@
                      $attrib_clobfile
                      $attrib_dbclobfile );
 
-    $VERSION = '0.77';
-    require_version DBI 1.21;
+    $VERSION = '1.6';
+    require_version DBI 1.41;
 
     bootstrap DBD::DB2;
 
@@ -129,6 +129,7 @@
     use strict;
 
     sub connect {
+
         my($drh, $dbname, $user, $auth, $attr)= @_;
 
         # create a 'blank' dbh
